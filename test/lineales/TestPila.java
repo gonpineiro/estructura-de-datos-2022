@@ -51,7 +51,7 @@ public class TestPila {
         System.out.println(pilaOriginal.toString());
         System.out.println("Tope 3: " + pilaOriginal.obtenerTope());
         System.out.println("______________________________________________________");
-        
+
 
         /* Creamos una nueva pila y clonamos la pila original en la nueva */
         System.out.println("Creamos una nueva pila y clonamos la pila original en la nueva");
@@ -65,6 +65,63 @@ public class TestPila {
         System.out.println(pilaOriginal.toString());
         System.out.println(nuevaPila.toString());
         System.out.println("______________________________________________________");
+
+        System.out.println("##########################");
+        System.out.println("PRUEBA METODO CAPICUA");
+        System.out.println("##########################");
+
+        Pila pilaCapicua = new Pila();
+
+        pilaCapicua.apilar(1);
+        pilaCapicua.apilar(2);
+        pilaCapicua.apilar(3);
+        pilaCapicua.apilar(4);
+        pilaCapicua.apilar(3);
+        pilaCapicua.apilar(2);
+        pilaCapicua.apilar(1);
+
+        /* Verificamos si es capicua */
+        System.out.println("Verificamos si es capicua: " + pilaCapicua.esCapiculaDigitos());
+        System.out.println("______________________________________________________");
+        
+        pilaCapicua.vaciar();
+        
+        pilaCapicua.apilar(1);
+        pilaCapicua.apilar(2);
+        pilaCapicua.apilar(3);
+        pilaCapicua.apilar(4);
+        pilaCapicua.apilar(4);
+        pilaCapicua.apilar(3);
+        pilaCapicua.apilar(1);
+        
+        /* Verificamos si es capicua */
+        System.out.println("Verificamos si es capicua: " + pilaCapicua.esCapiculaDigitos());
+        System.out.println("______________________________________________________");
+        
+        System.out.println("##########################");
+        System.out.println("PRUEBA PILAS STRING");
+        System.out.println("##########################");
+        
+        /* Creamos la pila de Strings */
+        Pila pilaString = new Pila();
+        pilaString.apilar("Primer Elemento");
+        pilaString.apilar("Segundo Elemento");
+        pilaString.apilar("Tercer Elemento");
+        pilaString.apilar("Cuarto Elemento");
+        pilaString.apilar("Quinto Elemento");
+        
+        System.out.println("Mostrar Pila: " + pilaString.toString());
+        System.out.println("Mostrar Tope: " + pilaString.obtenerTope());
+        pilaString.desapilar();
+        System.out.println("Mostrar Tope: " + pilaString.obtenerTope());
+        
+        pilaString.apilar("Nuevo Elemento!!!");
+        System.out.println("Mostrar Pila: " + pilaString.toString());
+        pilaString.vaciar();
+        System.out.println("Mostrar Pila: " + pilaString.toString());       
+        System.out.println("______________________________________________________");
+        
+        
 
     }
 
