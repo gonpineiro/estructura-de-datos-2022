@@ -8,15 +8,31 @@ package lineales.estaticas;
 /**
  *
  * @author Gonzalo
+ * 
+ *         1. Crear un paquete lineales.estaticas e implementar la clase Pila,
+ *         incluyendo todas las operaciones del TDA Pila.
+ * 
+ *         2. Crear un paquete tests.lineales e implementar la clase TestPila
+ *         que permita probar todas las operaciones
+ *         la clase Pila anterior con números enteros.
+ * 
+ *         3. En la clase TestPila escriba un método que, dada una pila llena
+ *         con dígitos (0..9), veri que si la secuencia forma un número capicúa
+ *         o no.
+ *         Nota: Utilizar una pila auxiliar para facilitar la operación.
+ * 
+ *         4. Extienda la clase TestPila para comprobar que la misma clase Pila
+ *         también funciona con elementos de tipo String
  */
+
 public class Pila {
 
     /* Un arreglo de tipo Object, elemento de la pila */
     private Object[] arreglo;
-    
+
     /* Entero que indica el indice del ultimo elemento ingresado, -1 si es vacio */
     private int tope;
-    
+
     /* Indica el tamaño maximo de la pila */
     private static final int TAMANIO = 20;
 
@@ -125,7 +141,10 @@ public class Pila {
 
             int posicion = this.tope;
             do {
-                /* Apilamos los elementos de la pila original a la auxiliar, asi obtenemos una pila invertida */
+                /*
+                 * Apilamos los elementos de la pila original a la auxiliar, asi obtenemos una
+                 * pila invertida
+                 */
                 pilaAux.apilar(this.arreglo[posicion]);
                 posicion--;
             } while (this.tope != pilaAux.tope);

@@ -11,7 +11,7 @@ import lineales.estaticas.Pila;
  *
  * @author Gonzalo
  */
-public class TestPila {
+public class TestPilaEstatica {
 
     /**
      * @param args the command line arguments
