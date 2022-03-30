@@ -5,13 +5,13 @@
  */
 package test.lineales;
 
-import lineales.estaticas.Pila;
+import lineales.dinamicas.Pila;
 
 /**
  *
  * @author Gonzalo
  */
-public class TestPilaEstatica {
+public class TestPila {
 
     /**
      * @param args the command line arguments
@@ -81,7 +81,6 @@ public class TestPilaEstatica {
         pilaCapicua.apilar(1);
 
         /* Verificamos si es capicua */
-        System.out.println("Verificamos si es capicua: " + pilaCapicua.esCapiculaDigitos());
         System.out.println("______________________________________________________");
         
         pilaCapicua.vaciar();
@@ -95,7 +94,6 @@ public class TestPilaEstatica {
         pilaCapicua.apilar(1);
         
         /* Verificamos si es capicua */
-        System.out.println("Verificamos si es capicua: " + pilaCapicua.esCapiculaDigitos());
         System.out.println("______________________________________________________");
         
         System.out.println("##########################");
