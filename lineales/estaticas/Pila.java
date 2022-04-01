@@ -77,29 +77,32 @@ public class Pila {
     @Override
     public String toString() {
         /* Retorna los valores que contiene la pila en formato String */
-
         String str = "";
+        int i = 0;
 
-        int longi = this.arreglo.length;
-
-        for (int i = 0; i < longi; i++) {
-            str += this.arreglo[i] + ", ";
+        if (!esVacia()) {
+            str = "[";
+            while ( i <= this.tope) {
+                str = str + this.arreglo[i].toString();
+                if (i < this.tope) {
+                    str = str + ",";
+                }
+                i++;
+            }
+            str = str + "]";
+        } else {
+            str = "Pila Vacia!";
         }
-
         return str;
     }
 
     public Object obtenerTope() {
         /* Obtenemos el tope de la pila y lo retornamos */
-        Object valor;
-        if (this.esVacia()) {
-            /* Error pila vacia */
-            valor = "pila vacia";
-        } else {
-            /* Guardamos el tope en valor */
-            valor = this.arreglo[tope];
+        Object retorno = null;
+        if (this.tope >= 0) {
+            retorno = this.arreglo[this.tope];
         }
-        return valor;
+        return retorno;
     }
 
     public boolean esVacia() {
@@ -120,15 +123,15 @@ public class Pila {
     @Override
     public Pila clone() {
         /* Clona la pila actual, y retona la pila clonada */
-        Pila pilaAux = new Pila();
+        Pila clon = new Pila();
+        int i = 0;
 
-        int ite = this.tope + 1;
-
-        for (int i = 0; i < ite; i++) {
-            pilaAux.apilar(this.arreglo[i]);
+        while (i <= this.tope) {
+            clon.arreglo[i] = this.arreglo[i];
+            i++;
         }
-
-        return pilaAux;
+        clon.tope = this.tope;
+        return clon;
     }
 
     public boolean esCapiculaDigitos() {
