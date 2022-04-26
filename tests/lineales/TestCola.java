@@ -5,7 +5,7 @@
  */
 package tests.lineales;
 
-import lineales.estaticas.Cola;
+import lineales.dinamicas.Cola;
 
 /**
  *
@@ -18,6 +18,51 @@ public class TestCola {
      */
     public static void main(String[] args) {
         Cola cola = new Cola();
+        Cola colaClone = new Cola();
+        cola.poner(25);
+        cola.poner(48);
+        cola.poner(23);
+
+        cola.sacar();
+
+        cola.poner(33);
+        cola.poner(12);
+        cola.poner(98);
+
+        cola.sacar();
+        colaClone = cola.cloneTres();
+        cola.poner(75);
+        cola.poner(95);
+        cola.poner(45);
+
+        cola.sacar();
+
+        cola.poner(11);
+        cola.poner(22);
+        cola.poner(45);
+
+        cola.vaciar();
+
+        cola.sacar();
+
+        cola.poner(11);
+        cola.poner(22);
+        cola.poner(33);
+
+        cola.sacar();
+
+        cola.poner(11);
+        cola.poner(22);
+        cola.poner(33);
+
+        cola.sacar();
+
+        cola.poner(11);
+        cola.poner(22);
+        cola.poner(33);
+
+        cola.sacar();
+
 
         System.out.println("");
         System.out.println("----------------------------------------------------");
@@ -64,6 +109,7 @@ public class TestCola {
                 + "\t\t * false: estática, TAMANIO > 10 | true: dinamicas");
         System.out.println("# Mostramos la cola:\t\t\t\t\t\t" + cola.toString());
         System.out.println("Sacamos un elemento:\t[Retorna: true ]:\t\t" + cola.sacar());
+        cola.poner(999);
         System.out.println("Mostramos la cola:\t\t\t\t\t\t" + cola.toString());
         System.out.println("Sacamos un elemento:\t[Retorna: true ]:\t\t " + cola.sacar());
         System.out.println("Mostramos la cola:\t\t\t\t\t\t" + cola.toString());

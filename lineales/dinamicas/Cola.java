@@ -66,6 +66,15 @@ public class Cola {
         this.fin = null;
     }
 
+    public Cola cloneTres(){
+        Cola aux = new Cola();
+
+        aux.frente = this.frente;
+        aux.fin = this.fin;
+
+        return aux;
+    }
+
     public Cola clone2() {
         // creamos la cola clone
         Cola clon = new Cola();

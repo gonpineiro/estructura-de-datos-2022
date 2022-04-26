@@ -26,7 +26,7 @@ public class Pila {
         boolean exito;
 
         if (this.tope + 1 >= this.TAMANIO) {
-            /* Error pila vacia */
+            /* Error pila llena */
             exito = false;
         } else {
             // pone el elemento en el tope de la pila

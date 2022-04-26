@@ -67,9 +67,9 @@ public class Cola {
 
     /** metodo para vaciar la cola */
     public void vaciar() {
-        // sobrescribimos el arreglo
-        this.arreglo = new Object[this.TAMANIO];
-        // restauramos los flecharos
+        for (int i = 0; i < this.TAMANIO; i++) {
+            arreglo[i] = null;
+        }
         this.frente = 0;
         this.fin = 0;
     }
@@ -169,6 +169,7 @@ public class Cola {
     public boolean estaLlena() {
         boolean retorno = false;
         // en caso de que el frente y el fin+1 son el mismo valor
+
         if (((this.fin + 1) % this.TAMANIO) == this.frente) {
             retorno = true;
         }
