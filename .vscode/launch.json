@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch TestGenericoTest",
+            "request": "launch",
+            "mainClass": "tests.jerarquicas.TestGenericoTest",
+            "projectName": "src_563cc83d"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestGenerico",
+            "request": "launch",
+            "mainClass": "tests.jerarquicas.TestGenerico",
+            "projectName": "src_563cc83d"
+        },
+        {
+            "type": "java",
             "name": "Launch TestBinario",
             "request": "launch",
             "mainClass": "tests.jerarquicas.TestBinario",
