@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch TestBinario",
+            "request": "launch",
+            "mainClass": "tests.jerarquicas.TestBinario",
+            "projectName": "src_563cc83d"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestArbolBin",
+            "request": "launch",
+            "mainClass": "tests.lineales.TestArbolBin",
+            "projectName": "src_563cc83d"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestArbolBin",
+            "request": "launch",
+            "mainClass": "TestArbolBin",
+            "projectName": "src_563cc83d"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

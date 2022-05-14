@@ -319,28 +319,55 @@ public class ArbolBin {
     }
 
     /***
+     * recorremos el arbol por inorden
+     */
+    public Lista listarInorden() {
+        Lista inorden = new Lista();
+        if (this.raiz != null) {
+            auxInorden(this.raiz, inorden);
+        }
+        return inorden;
+    }
+
+    /***
+     * metodo auxiliar para insertar los elementos del arbol el inorden
+     * 
+     * @param raiz    es la raiz del subarbol
+     * @param inorden es ka lista que se usa para insertar
+     */
+    private void auxInorden(NodoArbol raiz, Lista inorden) {
+        if (raiz != null) {
+            auxInorden(raiz.getIzquierdo(), inorden);
+            inorden.insertar(raiz.getElemento(), inorden.longitud() + 1);
+            auxInorden(raiz.getDerecho(), inorden);
+        }
+    }
+
+    /***
      * recorremos el arbol por niveles
      */
-    public Lista listarNiveles() {
+    public Lista listarPorNiveles() {
         // usamos una cola para poder recorrer los niveles
         Cola cola = new Cola();
         Lista nivel = new Lista();
-        // ponemos el nodo raiz en la cola
-        cola.poner(this.raiz);
-        // recorremos mientras la cola no este vacia
-        while (!cola.esVacia()) {
-            // obtenemos el tope de la cola
-            NodoArbol aux = (NodoArbol) cola.obtenerFrente();
-            nivel.insertar(aux.getElemento(), nivel.longitud() + 1);
-            cola.sacar();
+        if (raiz != null) {
+            // ponemos el nodo raiz en la cola
+            cola.poner(this.raiz);
+            // recorremos mientras la cola no este vacia
+            while (!cola.esVacia()) {
+                // obtenemos el tope de la cola
+                NodoArbol aux = (NodoArbol) cola.obtenerFrente();
+                nivel.insertar(aux.getElemento(), nivel.longitud() + 1);
+                cola.sacar();
 
-            // si el hijo izquierdo no es vacio lo ponemos en la cola
-            if (aux.getIzquierdo() != null) {
-                cola.poner(aux.getIzquierdo());
-            }
-            // si el hijo derecho no es vacio lo ponemos en la cola
-            if (aux.getDerecho() != null) {
-                cola.poner(aux.getDerecho());
+                // si el hijo izquierdo no es vacio lo ponemos en la cola
+                if (aux.getIzquierdo() != null) {
+                    cola.poner(aux.getIzquierdo());
+                }
+                // si el hijo derecho no es vacio lo ponemos en la cola
+                if (aux.getDerecho() != null) {
+                    cola.poner(aux.getDerecho());
+                }
             }
         }
         return nivel;
@@ -413,44 +440,82 @@ public class ArbolBin {
     }
 
     /***
-     * metodo recursivo auxiliar para poder armar el string del arbol 
+     * metodo recursivo auxiliar para poder armar el string del arbol
+     * 
      * @param raiz es la subraiz del subarbol
      * @return String es el string de retorno de la estructura del subarbol
      */
-    private String auxToString(NodoArbol raiz){
+    private String auxToString(NodoArbol raiz) {
         String retorno = "";
-        if(raiz != null){
-            retorno = raiz.getElemento().toString()+":";
-            
-            //obtenemos los hijos de este sub arbol
+        if (raiz != null) {
+            retorno = raiz.getElemento().toString() + ":";
+
+            // obtenemos los hijos de este sub arbol
             NodoArbol izquierdo = raiz.getIzquierdo();
             NodoArbol derecho = raiz.getDerecho();
-            //concatenamos lo que contengan esos hijos
-            if( izquierdo != null){
-                retorno = retorno + " HI:"+izquierdo.getElemento().toString();
-            }else{
+            // concatenamos lo que contengan esos hijos
+            if (izquierdo != null) {
+                retorno = retorno + " HI:" + izquierdo.getElemento().toString();
+            } else {
                 retorno = retorno + " HI:-";
             }
-           
-            if( derecho != null){
-                retorno = retorno + " HD:"+derecho.getElemento().toString();
-            }else{
+
+            if (derecho != null) {
+                retorno = retorno + " HD:" + derecho.getElemento().toString();
+            } else {
                 retorno = retorno + " HD:-";
             }
-            //creamos el salto de linea para darle formato
+            // creamos el salto de linea para darle formato
             retorno = retorno + "\n";
-            //y relizamos algun recorrido de arbol
-            if(izquierdo != null){
+            // y relizamos algun recorrido de arbol
+            if (izquierdo != null) {
                 retorno = retorno + auxToString(izquierdo);
             }
-            
-            if(derecho != null){
+
+            if (derecho != null) {
                 retorno = retorno + auxToString(derecho);
             }
         }
-        //retornamos dicho string generado
+        // retornamos dicho string generado
         return retorno;
     }
-    
+
+    /***
+     * retornamos una lista de los elementos en la frontera del arbol
+     * los que serian hoja del mismo
+     * 
+     * @return Lista con las hojas del arbol
+     */
+    public Lista frontera() {
+        Lista retorno = new Lista();
+        if (this.raiz != null) {
+            fronteraAux(this.raiz, retorno);
+        }
+        return retorno;
+    }
+
+    /***
+     * metodo auxiliar para almacenar las hojas del arbol
+     * 
+     * @param raiz  es la subraiz del subarbol
+     * @param lista es la Lista de hojas
+     */
+    private void fronteraAux(NodoArbol raiz, Lista lista) {
+        // si el nodo no es null
+        if (raiz != null) {
+            // evaluamos si no tenemos HI y si no tenemos HD en caso insertamos
+            if (raiz.getIzquierdo() == null && raiz.getDerecho() == null) {
+                lista.insertar(raiz.getElemento(), 1);
+            } else {
+                // caos contrario buscamos en los subarboles
+                if (raiz.getIzquierdo() != null) {
+                    fronteraAux(raiz.getIzquierdo(), lista);
+                }
+                if (raiz.getDerecho() != null) {
+                    fronteraAux(raiz.getDerecho(), lista);
+                }
+            }
+        }
+    }
 
 }
