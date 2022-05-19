@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Parcial03",
+            "request": "launch",
+            "mainClass": "tests.lineales.Parcial03",
+            "projectName": "estructura-de-datos-2022_720d59f3"
+        },
+        {
+            "type": "java",
             "name": "Launch TestGenericoTest",
             "request": "launch",
             "mainClass": "tests.jerarquicas.TestGenericoTest",

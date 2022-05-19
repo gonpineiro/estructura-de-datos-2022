@@ -105,4 +105,37 @@ public class Pila {
             pilaClon.tope = new Nodo(enlace.getElement(), pilaClon.tope);
         }
     }
+
+    public boolean equals(Pila pila) {
+
+        boolean retorno = equals(tope, pila.tope);
+
+        return retorno;
+    }
+
+    public boolean equals(Nodo nodoUno, Nodo nodoDos) {
+
+        boolean retorno = true;
+
+        if (nodoUno == nodoDos) {
+            /* Caso base, cuando ambos elementos son nulos */
+            retorno = true;
+        } else {
+            if (nodoUno != null && nodoDos != null) {
+                /* Si ninguno de los dos son nulos */
+                if (nodoUno.getElement() == nodoDos.getElement()) {
+                    /* Si los elementos son iguales realizamos la llamada recursiva */
+                    retorno = equals(nodoUno.getEnlace(), nodoDos.getEnlace());
+                } else {
+                    /* Si los elementos son diferentes retornamos un false */
+                    retorno = false;
+                }
+            } else {
+                /* Si un elemento es nulo y el otro no */
+                retorno = false;
+            }
+        }
+
+        return retorno;
+    }
 }

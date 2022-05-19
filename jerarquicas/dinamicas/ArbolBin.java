@@ -365,4 +365,37 @@ public class ArbolBin {
         }
     }
 
+    public void completarHermanos() {
+        completarHermanos(raiz);
+    }
+
+    private void completarHermanos(NodoArbol raiz) {
+
+        if (raiz != null) {
+            if (raiz.getDerecho() != null && raiz.getIzquierdo() == null) {
+                Object elem = raiz.getDerecho().getElemento();
+
+                NodoArbol nodo = new NodoArbol(elem, null, null);
+                raiz.setIzquierdo(nodo);
+
+                completarHermanos(raiz.getDerecho());
+            }
+
+            if (raiz.getDerecho() == null && raiz.getIzquierdo() != null) {
+                Object elem = raiz.getIzquierdo().getElemento();
+
+                NodoArbol nodo = new NodoArbol(elem, null, null);
+                raiz.setDerecho(nodo);
+
+                completarHermanos(raiz.getIzquierdo());
+            }
+
+            if (raiz.getDerecho() != null && raiz.getIzquierdo() != null) {
+                completarHermanos(raiz.getIzquierdo());
+                completarHermanos(raiz.getDerecho());
+            }
+        }
+
+    }
+
 }
