@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tests.lineales;
+package tests.primerParcial;
 
 import lineales.dinamicas.Pila;
 
@@ -11,7 +11,7 @@ import lineales.dinamicas.Pila;
  *
  * @author Gonzalo
  */
-public class Parcial02 {
+public class Punto02 {
 
     /**
      * @param args the command line arguments

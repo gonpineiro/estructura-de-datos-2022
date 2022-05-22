@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tests.lineales;
+package tests.primerParcial;
 
 import jerarquicas.dinamicas.ArbolBin;
-import lineales.dinamicas.Pila;
 
 /**
  *
  * @author Gonzalo
  */
-public class Parcial03 {
+public class Punto03 {
 
     /**
      * @param args the command line arguments
