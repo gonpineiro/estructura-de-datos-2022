@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Parcial01",
+            "request": "launch",
+            "mainClass": "tests.lineales.Parcial01",
+            "projectName": "src_563cc83d"
+        },
+        {
+            "type": "java",
             "name": "Launch Parcial03",
             "request": "launch",
             "mainClass": "tests.lineales.Parcial03",

@@ -28,31 +28,28 @@ public class TestGenericoTest {
 
         public static void main(String args[]) {
 
+                Lista lista = new Lista();
+                lista.insertar(1, lista.longitud() + 1);
+                lista.insertar(3, lista.longitud() + 1);
+                lista.insertar(7, lista.longitud() + 1);
+                lista.insertar(9, lista.longitud() + 1);
+                lista.insertar(9, lista.longitud() + 1);
+
                 ArbolGen a = new ArbolGen();
-                ArbolGen b = new ArbolGen();
 
                 a.insertar(1, null);
-                
+
                 a.insertar(2, 1);
                 a.insertar(3, 1);
                 a.insertar(4, 1);
 
-                a.insertar(5, 3);                
+                a.insertar(5, 3);
                 a.insertar(6, 3);
+                a.insertar(7, 3);
 
-                a.insertar(8, 6);
-                a.insertar(9, 6);
-                a.insertar(10, 6);
-                a.insertar(11, 6);
-
-
-                System.out.println(a.grado());
-                System.out.println(a.gradoSubarbol(11));
-
-                Lista lista = a.frontera();
-
-                System.out.println(lista.toString());
-
+                a.insertar(9, 7);
+                
+                a.verificarPatron(lista);
 
         }
 

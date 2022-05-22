@@ -23,7 +23,7 @@ public class Parcial01 {
         Cola cola = new Cola();
         cola.poner('A');
         cola.poner('A');
-        cola.poner('A');
+        cola.poner('B');
         cola.poner('A');
         cola.poner('A');
 
@@ -44,11 +44,12 @@ public class Parcial01 {
         cola.poner('A');
         cola.poner('B');
 
-        contarCapicua(cola);
+        /* <- AABAA$BAB$ABBA$AB <- */
+        System.out.println(contarCapicua(cola));
     }
 
     public static int contarCapicua(Cola cola) {
-        /* <- AABAA$BAB$ABBA$AB <- */
+
         int contar = 0;
 
         Cola colaClone = cola.clone();
@@ -62,69 +63,70 @@ public class Parcial01 {
         }
 
         while (listaTemp.longitud() != 0) {
+            /* Iteramos hasta que la lista se encuentra vacia */
             if (listaTemp.localizar('$') != -1) {
-
                 /*
                  * Guardamos los elementos a una pila y cola hasta encontrar el $, pero no
                  * guardamos el $
                  */
                 while (listaTemp.recuperar(1) != (Object) '$') {
-                    Object elem = listaTemp.recuperar(1);
-                    pilaTemp.apilar(elem);
-                    colaClone.poner(elem);
-                    listaTemp.eliminar(1);
+                    modificarEstr(pilaTemp, colaClone, listaTemp);
                 }
 
                 /* Eliminamos el simbolo $ */
                 listaTemp.eliminar(1);
 
-                boolean control = true;
-                while (pilaTemp.obtenerTope() != null && control) {
-                    if (pilaTemp.obtenerTope() != colaClone.obtenerFrente()) {
-                        control = false;
-
-                        /* Vaciamos la pila y la cola */
-                        pilaTemp.vaciar();
-                        colaClone.vaciar();
-                    }
-
-                    /* Retiramos el elemento que fue comparado */
-                    pilaTemp.desapilar();
-                    colaClone.sacar();
-                }
-
-                if (control) {
+                if (esCapicua(pilaTemp, colaClone)) {
                     contar++;
                 }
+
             } else {
                 while (listaTemp.longitud() != 0) {
-                    Object elem = listaTemp.recuperar(1);
-                    pilaTemp.apilar(elem);
-                    colaClone.poner(elem);
-                    listaTemp.eliminar(1);
+                    modificarEstr(pilaTemp, colaClone, listaTemp);
                 }
 
-                boolean control = true;
-                while (pilaTemp.obtenerTope() != null && control) {
-                    if (pilaTemp.obtenerTope() != colaClone.obtenerFrente()) {
-                        control = false;
-
-                        /* Vaciamos la pila y la cola */
-                        pilaTemp.vaciar();
-                        colaClone.vaciar();
-                    }
-
-                    pilaTemp.desapilar();
-                    colaClone.sacar();
-                }
-
-                if (control) {
+                if (esCapicua(pilaTemp, colaClone)) {
                     contar++;
                 }
             }
-
         }
 
         return contar;
+    }
+
+    /**
+     * Recibe una pila y una cola, y va comparando el tope de la pila
+     * con el frente de la cola, por cada comparacion eliminamos el tope de la pila
+     * y el frente de la cola. Si encuentra un elemento difente, retorna un false,
+     * si se vacian las esctructuras sin encontrar diferencia retorna un true. *
+     */
+
+    public static boolean esCapicua(Pila pila, Cola cola) {
+
+        boolean control = true;
+        while (pila.obtenerTope() != null && control) {
+            if (pila.obtenerTope() != cola.obtenerFrente()) {
+                control = false;
+
+                /* Vaciamos la pila y la cola */
+                pila.vaciar();
+                cola.vaciar();
+            }
+
+            pila.desapilar();
+            cola.sacar();
+        }
+
+        return control;
+    }
+
+    /**
+     * Modifica las estructuras para luego realizar el control.
+     */
+    public static void modificarEstr(Pila pila, Cola cola, Lista lista) {
+        Object elem = lista.recuperar(1);
+        pila.apilar(elem);
+        cola.poner(elem);
+        lista.eliminar(1);
     }
 }

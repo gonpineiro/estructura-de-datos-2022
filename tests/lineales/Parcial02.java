@@ -25,13 +25,11 @@ public class Parcial02 {
         pila.apilar(2);
         pila.apilar(3);
         pila.apilar(4);
-        pila.apilar(6);
 
         pilaDos.apilar(1);
         pilaDos.apilar(2);
-        pilaDos.apilar(5);
+        pilaDos.apilar(3);
         pilaDos.apilar(4);
-        pilaDos.apilar(6);
 
         pila.equals(pilaDos);
     }

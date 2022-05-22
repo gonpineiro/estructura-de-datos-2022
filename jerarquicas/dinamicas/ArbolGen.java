@@ -469,4 +469,76 @@ public class ArbolGen {
 
         return grado;
     }
+
+    public boolean sonFrontera(Lista unaLista) {
+        boolean exito = false;
+
+        Lista listaClone = unaLista.clone();
+
+        exito = sonFrontera(listaClone, raiz, true);
+
+        return exito;
+    }
+
+    public boolean sonFrontera(Lista unaLista, NodoGen raiz, boolean control) {
+        boolean exito = control;
+
+        if (exito) {
+            if (raiz.getHijoIzquierdo() != null) {
+                NodoGen aux = raiz.getHijoIzquierdo();
+                while (aux != null) {
+                    sonFrontera(unaLista, aux, control);
+                    aux = aux.getHermanoDerecho();
+                }
+            } else {
+                if (unaLista.localizar(raiz.getElemento()) != -1) {
+                    unaLista.eliminar(unaLista.localizar(raiz.getElemento()));
+                    exito = sonFrontera(unaLista, raiz, control);
+                } else {
+                    exito = false;
+                }
+            }
+        }
+        return exito;
+    }
+
+    public boolean verificarPatron(Lista lista) {
+        Lista listaClone = lista.clone();
+
+        boolean exito = false;
+
+        if (raiz.getElemento() == listaClone.recuperar(1)) {
+            listaClone.eliminar(1);
+            exito = verificarPatron(listaClone, raiz.getHijoIzquierdo());
+        }
+
+        return exito;
+
+    }
+
+    private boolean verificarPatron(Lista lista, NodoGen nodo) {
+        boolean exito = true;
+
+        if (nodo != null) {
+            if (nodo.getElemento() == lista.recuperar(1)) {
+                lista.eliminar(1);
+                if (nodo.getHijoIzquierdo() != null) {
+                    exito = verificarPatron(lista, nodo.getHijoIzquierdo());
+                } else {
+                    exito = verificarPatron(lista, nodo.getHermanoDerecho());
+                }
+            } else {
+                if (nodo.getHermanoDerecho() != null) {
+                    exito = verificarPatron(lista, nodo.getHermanoDerecho());
+                }
+            }
+        } else {
+            if (lista.longitud() != 0) {
+                exito = false;
+            }
+        }
+
+        return exito;
+    }
+
 }
