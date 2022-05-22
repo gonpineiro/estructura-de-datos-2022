@@ -398,4 +398,46 @@ public class ArbolBin {
 
     }
 
+    public Lista obtenerAncestros(Object elem) {
+        Lista lista = new Lista();
+
+        if (raiz.getElemento() != elem) {
+            obtenerAncestros(raiz, lista, elem);
+        }
+
+        return lista;
+    }
+
+    private boolean obtenerAncestros(NodoArbol raiz, Lista lista, Object elem) {
+        boolean fin = false;
+        if (raiz != null) {
+
+            if (raiz.getIzquierdo() != null) {
+                if (raiz.getIzquierdo().getElemento() == elem) {
+                    lista.insertar(raiz.getElemento(), lista.longitud() + 1);
+                    fin = true;
+                } else {
+                    fin = obtenerAncestros(raiz.getIzquierdo(), lista, elem);
+                    if (fin) {
+                        lista.insertar(raiz.getElemento(), lista.longitud() + 1);
+                    }
+                }
+            }
+
+            if (raiz.getDerecho() != null && !fin) {
+                if (raiz.getDerecho().getElemento() == elem) {
+                    lista.insertar(raiz.getElemento(), lista.longitud() + 1);
+                    fin = true;
+                } else {
+                    fin = obtenerAncestros(raiz.getDerecho(), lista, elem);
+                    if (fin) {
+                        lista.insertar(raiz.getElemento(), lista.longitud() + 1);
+                    }
+                }
+            }
+
+        }
+
+        return fin;
+    }
 }

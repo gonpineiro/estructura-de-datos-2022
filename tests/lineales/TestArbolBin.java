@@ -6,6 +6,7 @@
 package tests.lineales;
 
 import jerarquicas.dinamicas.ArbolBin;
+import lineales.dinamicas.Lista;
 
 /**
  *
@@ -20,12 +21,20 @@ public class TestArbolBin {
         ArbolBin arbol = new ArbolBin();
 
         arbol.insertar(1, null, 'I');
-        arbol.insertar(3, 1, 'I');
-        arbol.insertar(2, 1, 'D');
-        arbol.insertar(4, 1, 'D');
-        arbol.insertar(5, 1, 'D');
-        arbol.insertar(6, 1, 'D');
-        arbol.insertar(7, 1, 'D');
+
+        arbol.insertar(2, 1, 'I');
+        arbol.insertar(3, 1, 'D');
+
+        arbol.insertar(4, 2, 'I');
+        arbol.insertar(5, 2, 'D');
+
+        arbol.insertar(6, 3, 'D');
+        arbol.insertar(8, 6, 'D');
+        arbol.insertar(9, 8, 'D');
+
+        Lista lista = arbol.obtenerAncestros(9);
+        
+        System.out.println(lista.toString());
         
     }
 }
