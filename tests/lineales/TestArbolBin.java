@@ -6,6 +6,7 @@
 package tests.lineales;
 
 import jerarquicas.dinamicas.ArbolBin;
+import jerarquicas.dinamicas.NodoArbol;
 import lineales.dinamicas.Lista;
 
 /**
@@ -34,7 +35,9 @@ public class TestArbolBin {
 
         Lista lista = arbol.obtenerAncestros(9);
         
-        System.out.println(lista.toString());
+        Lista listaDesc = arbol.obtenerDescendientes(3);
+
+        System.out.println(listaDesc.toString());
         
     }
 }

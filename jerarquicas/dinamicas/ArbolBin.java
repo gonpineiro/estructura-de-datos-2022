@@ -440,4 +440,51 @@ public class ArbolBin {
 
         return fin;
     }
+
+    public Lista obtenerDescendientes(Object elem) {
+        Lista lista = new Lista();
+
+        if (raiz != null) {
+            NodoArbol nodo = getNodoPadre(raiz, elem);
+            if (nodo != null) {
+                obtenerDescendientes(nodo, lista);
+            }
+        }
+
+        return lista;
+    }
+
+    private Lista obtenerDescendientes(NodoArbol raiz, Lista lista) {
+
+        if (raiz != null) {
+            if (raiz.getIzquierdo() != null) {
+                lista.insertar(raiz.getIzquierdo().getElemento(), lista.longitud() + 1);
+                obtenerDescendientes(raiz.getIzquierdo(), lista);
+            }
+
+            if (raiz.getDerecho() != null) {
+                lista.insertar(raiz.getDerecho().getElemento(), lista.longitud() + 1);
+                obtenerDescendientes(raiz.getDerecho(), lista);
+            }
+        }
+
+        return lista;
+    }
+
+    private NodoArbol getNodoPadre(NodoArbol raiz, Object elem) {
+        NodoArbol nodo = null;
+        if (raiz != null) {
+
+            if (raiz.getElemento() == elem) {
+                nodo = raiz;
+            } else {
+                nodo = getNodoPadre(raiz.getIzquierdo(), elem);
+                if (nodo == null) {
+                    nodo = getNodoPadre(raiz.getDerecho(), elem);
+                }
+            }
+        }
+
+        return nodo;
+    }
 }
