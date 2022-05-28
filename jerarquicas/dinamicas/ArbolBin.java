@@ -372,6 +372,7 @@ public class ArbolBin {
     private void completarHermanos(NodoArbol raiz) {
 
         if (raiz != null) {
+            boolean control = true;
             if (raiz.getDerecho() != null && raiz.getIzquierdo() == null) {
                 Object elem = raiz.getDerecho().getElemento();
 
@@ -379,6 +380,7 @@ public class ArbolBin {
                 raiz.setIzquierdo(nodo);
 
                 completarHermanos(raiz.getDerecho());
+                control = false;
             }
 
             if (raiz.getDerecho() == null && raiz.getIzquierdo() != null) {
@@ -388,9 +390,10 @@ public class ArbolBin {
                 raiz.setDerecho(nodo);
 
                 completarHermanos(raiz.getIzquierdo());
+                control = false;
             }
 
-            if (raiz.getDerecho() != null && raiz.getIzquierdo() != null) {
+            if (raiz.getDerecho() != null && raiz.getIzquierdo() != null && control) {
                 completarHermanos(raiz.getIzquierdo());
                 completarHermanos(raiz.getDerecho());
             }
