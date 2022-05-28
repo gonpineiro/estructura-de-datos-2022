@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Punto01",
+            "request": "launch",
+            "mainClass": "tests.simulacroSegundoParcial.Punto01",
+            "projectName": "src_563cc83d"
+        },
+        {
+            "type": "java",
             "name": "Launch TestHeapMaximo",
             "request": "launch",
             "mainClass": "tests.conjustistas.TestHeapMaximo",

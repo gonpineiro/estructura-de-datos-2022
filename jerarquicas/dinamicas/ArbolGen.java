@@ -541,4 +541,50 @@ public class ArbolGen {
         return exito;
     }
 
+    public boolean verificarCamino(Lista lista) {
+        boolean retorno = false;
+
+        if (lista.esVacia() && esVacio()) {
+            retorno = true;
+        } else {
+            if (((lista.esVacia() && !esVacio()) || (!lista.esVacia() && esVacio()))) {
+                retorno = false;
+            } else {
+                if (lista.recuperar(1).equals(raiz.getElemento())) {
+                    retorno = verificarCamino(lista, raiz, 2);
+                }
+            }
+        }
+
+        return retorno;
+    }
+
+    public boolean verificarCamino(Lista lista, NodoGen raiz, int indice) {
+        boolean retorno = false;
+
+        Object valor = lista.recuperar(indice);
+
+        if (valor != null) {
+            NodoGen aux = raiz.getHijoIzquierdo();
+
+            boolean control = true;
+            while (aux != null && control) {
+                if (aux.getElemento() == valor) {
+                    control = false;
+                    retorno = true;
+                } else {
+                    aux = aux.getHermanoDerecho();
+                }
+            }
+
+            if (retorno) {
+                retorno = verificarCamino(lista, aux, indice + 1);
+            }
+
+        } else {
+            retorno = true;
+        }
+
+        return retorno;
+    }
 }
