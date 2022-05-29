@@ -1,6 +1,6 @@
 package tests.conjustistas;
 
-import conjuntitas.estaticas.ArbolHeapMaximo;
+import conjuntistas.estaticas.ArbolHeapMaximo;
 
 public class TestHeapMaximo {
     public static void main(String args[]) {
