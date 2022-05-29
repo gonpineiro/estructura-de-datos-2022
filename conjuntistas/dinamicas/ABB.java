@@ -524,4 +524,28 @@ public class ABB {
         return retorno;
     }
 
+    public void eliminarMinimo() {
+        if (raiz != null) {
+            if (raiz.getIzquierdo() == null && raiz.getDerecho() == null) {
+                /* Cuando la raiz es el unico elemento */
+                raiz = null;
+            } else {
+                if (raiz.getIzquierdo() == null && raiz.getDerecho() != null) {
+                    /* Cuando no tiene hijo izquierdo */
+                    raiz = raiz.getDerecho();
+                } else {
+                    /* Cuando tiene hijo izquierdo */
+                    eliminarMinimo(raiz);
+                }
+            }
+        }
+    }
+
+    private void eliminarMinimo(NodoBB raiz) {
+        if (raiz.getIzquierdo().getIzquierdo() == null) {
+            raiz.setIzquierdo(null);
+        } else {
+            eliminarMinimo(raiz.getIzquierdo());
+        }
+    }
 }
